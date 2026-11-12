@@ -135,6 +135,22 @@ td:first-child { font-weight: 600; white-space: nowrap; }
 .slides { display: grid; gap: 16px; margin: 24px 0; }
 .slides img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 8px; }
 
+.player-bar { display: none; }
+.slides .btn { justify-self: start; }
+.slides.is-player img { cursor: pointer; }
+.slides.is-player img[hidden] { display: none; }
+.slides.is-player .player-bar { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.pbtn {
+  background: none; color: var(--text); border: 1px solid var(--line); border-radius: 999px;
+  width: 44px; height: 44px; font-size: 18px; cursor: pointer;
+}
+.pbtn:hover { border-color: var(--accent); color: var(--accent); }
+.pbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.pcount { min-width: 64px; text-align: center; color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+.slides:fullscreen { background: #000; display: flex; flex-direction: column; justify-content: center; padding: 16px; }
+.slides:fullscreen img { max-height: calc(100vh - 100px); object-fit: contain; border: 0; }
+.slides:fullscreen .btn { display: none; }
+
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
 .site-footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }

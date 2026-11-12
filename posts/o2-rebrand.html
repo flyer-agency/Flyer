@@ -31,7 +31,7 @@
         <p class="post-meta"><time datetime="2026-11-12">12 November 2026</time> · Ondřej Bureš, Tereza Vítková</p>
       </header>
 
-      <section class="slides" aria-label="Presentation slides">
+      <section class="slides" id="player" aria-label="Presentation slides" aria-roledescription="carousel">
         <img src="../presentation/o2/slide-01.jpg" alt="Slide 1" width="1467" height="825" loading="eager">
         <img src="../presentation/o2/slide-02.jpg" alt="Slide 2" width="1467" height="825" loading="eager">
         <img src="../presentation/o2/slide-03.jpg" alt="Slide 3" width="1467" height="825" loading="lazy">
@@ -48,6 +48,12 @@
         <img src="../presentation/o2/slide-14.jpg" alt="Slide 14" width="1467" height="825" loading="lazy">
         <img src="../presentation/o2/slide-15.jpg" alt="Slide 15" width="1467" height="825" loading="lazy">
         <img src="../presentation/o2/slide-16.jpg" alt="Slide 16" width="1467" height="825" loading="lazy">
+        <div class="player-bar">
+          <button type="button" class="pbtn" id="prev" aria-label="Previous slide">←</button>
+          <span class="pcount" id="count" aria-live="polite"></span>
+          <button type="button" class="pbtn" id="next" aria-label="Next slide">→</button>
+          <button type="button" class="pbtn" id="full" aria-label="Full screen">⤢</button>
+        </div>
         <a class="btn" href="../presentation/flyer-o2-rebrand.pdf" target="_blank" rel="noopener">Open the presentation (PDF) ↗</a>
       </section>
     </article>
@@ -59,5 +65,47 @@
       <span>Ideas that land.</span>
     </div>
   </footer>
+
+  <script>
+    // Turn the stacked slide images into a one-at-a-time player. Without JS, all slides stay stacked.
+    (function () {
+      var player = document.getElementById("player");
+      var slides = player.querySelectorAll("img");
+      var count = document.getElementById("count");
+      var i = 0;
+      player.classList.add("is-player");
+      slides.forEach(function (img) { img.loading = "eager"; });
+      function show(n) {
+        i = Math.max(0, Math.min(slides.length - 1, n));
+        slides.forEach(function (img, k) { img.hidden = k !== i; });
+        count.textContent = (i + 1) + " / " + slides.length;
+      }
+      document.getElementById("prev").onclick = function () { show(i - 1); };
+      document.getElementById("next").onclick = function () { show(i + 1); };
+      document.getElementById("full").onclick = function () {
+        if (document.fullscreenElement) document.exitFullscreen();
+        else if (player.requestFullscreen) player.requestFullscreen().catch(function () {});
+      };
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); show(i + 1); }
+        if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); show(i - 1); }
+      });
+      slides.forEach(function (img) {
+        img.addEventListener("click", function (e) {
+          var r = img.getBoundingClientRect();
+          show(e.clientX - r.left < r.width / 3 ? i - 1 : i + 1);
+        });
+      });
+      var x0 = null;
+      player.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+      player.addEventListener("touchend", function (e) {
+        if (x0 === null) return;
+        var dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 40) show(dx < 0 ? i + 1 : i - 1);
+        x0 = null;
+      });
+      show(0);
+    })();
+  </script>
 </body>
 </html>
