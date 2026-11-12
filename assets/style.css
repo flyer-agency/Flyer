@@ -131,6 +131,10 @@ td:first-child { font-weight: 600; white-space: nowrap; }
 }
 .btn:hover { border-color: var(--accent); }
 
+/* Slides as images */
+.slides { display: grid; gap: 16px; margin: 24px 0; }
+.slides img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 8px; }
+
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
 .site-footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }

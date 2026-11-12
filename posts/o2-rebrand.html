@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>O2 Rebrand — Flyer</title>
-  <meta name="description" content="Flyer's pitch for the O2 rebrand.">
+  <title>O dva kroky napřed — Flyer</title>
+  <meta name="description" content="Flyer's expert opinion for PPF on the future of the O2 brand in the Czech market.">
   <link rel="icon" href="../assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,13 +26,29 @@
     <article>
       <header>
         <p class="kicker">Flyer · Pitch</p>
-        <h1>O2 Rebrand</h1>
-        <p class="lede">Our proposal for the O2 rebrand.</p>
+        <h1>O dva kroky napřed</h1>
+        <p class="lede">Expert opinion for PPF on the future of the O2 brand in the Czech market.</p>
+        <p class="post-meta"><time datetime="2026-11-12">12 November 2026</time> · Ondřej Bureš, Tereza Vítková</p>
       </header>
 
-      <!-- SLIDES: upload the exported deck as presentation/flyer-o2-rebrand.pdf and it appears here automatically. -->
-      <section class="deck" id="deck">
-        <div class="placeholder">The presentation will be published here.</div>
+      <section class="slides" aria-label="Presentation slides">
+        <img src="../presentation/o2/slide-01.jpg" alt="Slide 1" width="1467" height="825" loading="eager">
+        <img src="../presentation/o2/slide-02.jpg" alt="Slide 2" width="1467" height="825" loading="eager">
+        <img src="../presentation/o2/slide-03.jpg" alt="Slide 3" width="1467" height="825" loading="lazy">
+        <img src="../presentation/o2/slide-04.jpg" alt="Slide 4" width="1467" height="825" loading="lazy">
+        <img src="../presentation/o2/slide-05.jpg" alt="Slide 5" width="1467" height="825" loading="lazy">
+        <img src="../presentation/o2/slide-06.jpg" alt="Slide 6" width="1467" height="825" loading="lazy">
+        <img src="../presentation/o2/slide-07.jpg" alt="Slide 7" width="1467" height="825" loading="lazy">
+        <img src="../presentation/o2/slide-08.jpg" alt="Slide 8" width="1467" height="825" loading="lazy">
+        <img src="../presentation/o2/slide-09.jpg" alt="Slide 9" width="1467" height="825" loading="lazy">
+        <img src="../presentation/o2/slide-10.jpg" alt="Slide 10" width="1467" height="825" loading="lazy">
+        <img src="../presentation/o2/slide-11.jpg" alt="Slide 11" width="1467" height="825" loading="lazy">
+        <img src="../presentation/o2/slide-12.jpg" alt="Slide 12" width="1467" height="825" loading="lazy">
+        <img src="../presentation/o2/slide-13.jpg" alt="Slide 13" width="1467" height="825" loading="lazy">
+        <img src="../presentation/o2/slide-14.jpg" alt="Slide 14" width="1467" height="825" loading="lazy">
+        <img src="../presentation/o2/slide-15.jpg" alt="Slide 15" width="1467" height="825" loading="lazy">
+        <img src="../presentation/o2/slide-16.jpg" alt="Slide 16" width="1467" height="825" loading="lazy">
+        <a class="btn" href="../presentation/flyer-o2-rebrand.pdf" target="_blank" rel="noopener">Open the presentation (PDF) ↗</a>
       </section>
     </article>
   </main>
@@ -43,18 +59,5 @@
       <span>Ideas that land.</span>
     </div>
   </footer>
-
-  <script>
-    // Show the deck if the PDF has been uploaded; otherwise keep the placeholder.
-    (function () {
-      var src = "../presentation/flyer-o2-rebrand.pdf";
-      fetch(src, { method: "HEAD" }).then(function (r) {
-        if (!r.ok) return;
-        document.getElementById("deck").innerHTML =
-          '<iframe src="' + src + '" title="Flyer — O2 Rebrand (presentation)"></iframe>' +
-          '<a class="btn" href="' + src + '" target="_blank" rel="noopener">Open the presentation ↗</a>';
-      }).catch(function () {});
-    })();
-  </script>
 </body>
 </html>
