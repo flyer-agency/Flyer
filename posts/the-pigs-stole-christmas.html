@@ -31,9 +31,25 @@
         <p class="post-meta"><time datetime="2026-10-15">15 October 2026</time></p>
       </header>
 
-      <!-- SLIDES: upload the exported deck as presentation/flyer-albert-christmas-2026.pdf and it appears here automatically. -->
-      <section class="deck" id="deck">
-        <div class="placeholder">The presentation will be published here.</div>
+      <section class="slides" id="player" aria-label="Presentation slides" aria-roledescription="carousel">
+        <img src="../presentation/albert/slide-01.jpg" alt="Slide 1" width="1466" height="825" loading="eager">
+        <img src="../presentation/albert/slide-02.jpg" alt="Slide 2" width="1466" height="825" loading="eager">
+        <img src="../presentation/albert/slide-03.jpg" alt="Slide 3" width="1466" height="825" loading="lazy">
+        <img src="../presentation/albert/slide-04.jpg" alt="Slide 4" width="1466" height="825" loading="lazy">
+        <img src="../presentation/albert/slide-05.jpg" alt="Slide 5" width="1466" height="825" loading="lazy">
+        <img src="../presentation/albert/slide-06.jpg" alt="Slide 6" width="1466" height="825" loading="lazy">
+        <img src="../presentation/albert/slide-07.jpg" alt="Slide 7" width="1466" height="825" loading="lazy">
+        <img src="../presentation/albert/slide-08.jpg" alt="Slide 8" width="1466" height="825" loading="lazy">
+        <img src="../presentation/albert/slide-09.jpg" alt="Slide 9" width="1466" height="825" loading="lazy">
+        <img src="../presentation/albert/slide-10.jpg" alt="Slide 10" width="1466" height="825" loading="lazy">
+        <img src="../presentation/albert/slide-11.jpg" alt="Slide 11" width="1466" height="825" loading="lazy">
+        <div class="player-bar">
+          <button type="button" class="pbtn" id="prev" aria-label="Previous slide">←</button>
+          <span class="pcount" id="count" aria-live="polite"></span>
+          <button type="button" class="pbtn" id="next" aria-label="Next slide">→</button>
+          <button type="button" class="pbtn" id="full" aria-label="Full screen">⤢</button>
+        </div>
+        <a class="btn" href="../presentation/flyer-albert-christmas-2026.pdf" target="_blank" rel="noopener">Open the presentation (PDF) ↗</a>
       </section>
     </article>
   </main>
@@ -45,17 +61,6 @@
     </div>
   </footer>
 
-  <script>
-    // Show the deck if the PDF has been uploaded; otherwise keep the placeholder.
-    (function () {
-      var src = "../presentation/flyer-albert-christmas-2026.pdf";
-      fetch(src, { method: "HEAD" }).then(function (r) {
-        if (!r.ok) return;
-        document.getElementById("deck").innerHTML =
-          '<iframe src="' + src + '" title="Flyer — The Pigs Stole Christmas (presentation)"></iframe>' +
-          '<a class="btn" href="' + src + '" target="_blank" rel="noopener">Open the presentation ↗</a>';
-      }).catch(function () {});
-    })();
-  </script>
+  <script src="../assets/player.js"></script>
 </body>
 </html>
